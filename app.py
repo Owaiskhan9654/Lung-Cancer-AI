@@ -39,52 +39,58 @@ def process():
     metastases_lung = request.form['metastases_lung']
     metastases_liver = request.form['metastases_liver']
     ml_algoritms = request.form.getlist('mlalgos')
-    df_predict = pd.DataFrame(
-        {'Agerecodewith1yearolds': [int(age_recoded)], 'RacerecodeWhiteBlackOther': [int(race)], 'Sex': [int(sex)],\
-         'Yearofdiagnosis': [int(year_of_diagnosis)], 'SiterecodeICDO3WHO2008': [int(site_recoded)],\
-         'PrimarySite': [int(primary_site_of_cancer)],'Gradethru2017': [int(grade)], 'Laterality': [int(laterality)],\
-         'DerivedAJCCT6thed20042015': [int(t_stage)],'DerivedAJCCN6thed20042015': [int(n_stage)], \
-         'DerivedAJCCM6thed20042015': [int(m_stage)],'SEERCombinedMetsatDXbone2010': [int(metastases_bone)],
-         'SEERCombinedMetsatDXbrain2010': [int(metastases_brain)],'SEERCombinedMetsatDXliver2010': [int(metastases_liver)],\
-         'SEERCombinedMetsatDXlung2010': [int(metastases_lung)],'CStumorsize20042015': [int(tumor_size)]})
-    Prediction_list=['No Model Chosen']
-    for i in ml_algoritms:
+    try:
+        df_predict = pd.DataFrame(
+            {'Agerecodewith1yearolds': [int(age_recoded)], 'RacerecodeWhiteBlackOther': [int(race)], 'Sex': [int(sex)],\
+             'Yearofdiagnosis': [int(year_of_diagnosis)], 'SiterecodeICDO3WHO2008': [int(site_recoded)],\
+             'PrimarySite': [int(primary_site_of_cancer)],'Gradethru2017': [int(grade)], 'Laterality': [int(laterality)],\
+             'DerivedAJCCT6thed20042015': [int(t_stage)],'DerivedAJCCN6thed20042015': [int(n_stage)], \
+             'DerivedAJCCM6thed20042015': [int(m_stage)],'SEERCombinedMetsatDXbone2010': [int(metastases_bone)],
+             'SEERCombinedMetsatDXbrain2010': [int(metastases_brain)],'SEERCombinedMetsatDXliver2010': [int(metastases_liver)],\
+             'SEERCombinedMetsatDXlung2010': [int(metastases_lung)],'CStumorsize20042015': [int(tumor_size)]})
+        Prediction_list=['No Model Chosen']
+        for i in ml_algoritms:
 
-        if i == 'random_forest':
-            Prediction_list = utils.Random_forest_predict(df_predict)
+            if i == 'random_forest':
+                Prediction_list = utils.Random_forest_predict(df_predict)
 
-        elif i == 'catboost':
-            Prediction_list = utils.CatBoost_predict(df_predict)
+            elif i == 'catboost':
+                Prediction_list = utils.CatBoost_predict(df_predict)
 
-        elif i == 'lightgbm':
-            Prediction_list = utils.LightGBM_predict(df_predict)
+            elif i == 'lightgbm':
+                Prediction_list = utils.LightGBM_predict(df_predict)
 
-        elif i == 'automl':
-            Prediction_list = utils.AutoML_predict(df_predict)
+            elif i == 'automl':
+                Prediction_list = utils.AutoML_predict(df_predict)
 
-        elif i == 'logisticregression':
-            Prediction_list = utils.Logistic_Regression_predict(df_predict)
+            elif i == 'logisticregression':
+                Prediction_list = utils.Logistic_Regression_predict(df_predict)
 
-        elif i == 'svm':
-            Prediction_list = utils.SVC_predict(df_predict)
+            elif i == 'svm':
+                Prediction_list = utils.SVC_predict(df_predict)
 
-        elif i == 'neural_network':
-            Prediction_list = utils.neural_network_predict(df_predict)
+            elif i == 'neural_network':
+                Prediction_list = utils.neural_network_predict(df_predict)
 
-        elif i == 'knn':
-            Prediction_list = utils.KNN_predict(df_predict)
+            elif i == 'knn':
+                Prediction_list = utils.KNN_predict(df_predict)
 
-        elif i == 'xgboost':
-            Prediction_list = utils.XGB_predict(df_predict)
+            elif i == 'xgboost':
+                Prediction_list = utils.XGB_predict(df_predict)
 
-        elif i == 'extratree':
-            Prediction_list= utils.extratree_predict(df_predict)
+            elif i == 'extratree':
+                Prediction_list= utils.extratree_predict(df_predict)
 
-        all_prediction_data.append(Prediction_list)
+            all_prediction_data.append(Prediction_list)
 
 
-    print(all_prediction_data)
-    return render_template('predict.html',show_error='false',all_prediction_data=all_prediction_data)
+        print(all_prediction_data)
+        return render_template('predict.html',show_error='false',all_prediction_data=all_prediction_data)
+    except:
+        all_prediction_data=[]
+        return render_template('predict.html', show_error='true', all_prediction_data=all_prediction_data)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="127.0.0.1")
