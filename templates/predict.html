@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>An Artificial Intelligence Model for Predicting Surgeries Requirements in Non-Small-Cell Lung Cancer Patients  Based on XGBoost Algorithm</title>
+
+    <link rel="shortcut icon" href="https://images.squarespace-cdn.com/content/v1/602a6f5204cc80278e0e5ed1/1615300997899-VP2OEPL21UFCR4MVM21Z/favicon.ico?format=100w">
+
+    <link href="{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="{{ url_for('static',filename='css/bootstrap-select.css') }}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+
+    <link href="{{ url_for('static',filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+<div id="wrapper">
+
+    <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+
+            <img src='static/img/Canary_logo_White-01.svg')>
+        </a>
+
+
+        <hr class="sidebar-divider my-0">
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-brand-text mx-3" style="color:white;">Precision Medicine Based sets of Artificial Intelligence Models for Predicting Surgeries Requirements in Non-Small-Cell Lung Cancer Patients Based on Several Machine Learning Algorithms and Techniques</div>
+
+
+    </ul>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" >
+
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+
+                <p style="margin-top: 15px"> Disclaimer: This Project is under Development and not right now for Production and Internal Part of Canary Global Inc. </p>
+
+
+            </nav>
+
+            {% if show_error == "true" %}
+            <p style="text-align:center;margin-top:18%;margin-bottom:18%">
+                <i class="fas fa-bug fa-5x" style="color:#b00202;"></i>
+                    <br/>
+                    <br/>
+
+             <br/>Something Went Wrong!!!!
+                </p>
+            <div class="container-fluid" >
+
+                {% else %}
+
+                    <div class="row">
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-2 text-gray-800">Prediction Results</h1>
+                            <p class="mb-4">The following tables shows the Machine Learning Model Predictions for Surgeries Requirements in Non-Small-Cell Lung Cancer Patients.</p>
+                            {% for i in range(0,all_prediction_data| length)  %}
+                            <!-- DataTales Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text" style="color: {{all_prediction_data[i][3]}}">Predictions for Model {{all_prediction_data[i][0]}} </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+
+                                                <th>Prediction</th>
+                                                <th>Prediction Confidence</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <td style="color: {{all_prediction_data[i][4]}}">{{all_prediction_data[i][1]}}</td>
+                                            <td style="color: {{all_prediction_data[i][4]}}">{{all_prediction_data[i][2]}}</td>
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>{% endfor %}
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+
+                    {% endif %}
+
+
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Canary Global Inc.</span></br></br>
+                        <span>Developed By <a href="https://owaiskhan9654.github.io/">Owais Ahmad</a></span>
+                    </div>
+                </div>
+            </footer>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='css/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ url_for('static',filename='vendor/chart.js/Chart.min.js') }}"></script>
+
+
+
+
+
+</body>
+
+</html>
