@@ -11,7 +11,7 @@ def Random_forest_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
@@ -35,7 +35,7 @@ def CatBoost_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
@@ -60,7 +60,7 @@ def LightGBM_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
@@ -86,7 +86,7 @@ def AutoML_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
@@ -112,7 +112,7 @@ def Logistic_Regression_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
@@ -137,7 +137,7 @@ def SVC_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
@@ -162,7 +162,7 @@ def neural_network_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
@@ -188,7 +188,7 @@ def KNN_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
@@ -213,7 +213,7 @@ def XGB_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
