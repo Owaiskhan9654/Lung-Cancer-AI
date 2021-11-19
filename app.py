@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, send_from_directory,redirect,url_for,session
-import requests
 import pandas as pd
 import utils
 import functools
@@ -152,4 +151,4 @@ def logout():
     return redirect(url_for('login_page'))
 
 if __name__ == '__main__':
-    app.run(debug=False, host="127.0.0.10")
+    app.run(debug=False, host="127.0.0.1")
