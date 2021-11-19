@@ -174,7 +174,7 @@ def neural_network_predict(df_predict):
         else:
             b.append(1 - i)
     for i in range(len(b)):
-        d.append(["Multi Layer Perceptron (Neural Networks) With 71% Accuracy and Trained on 18-11-2021", c, b[i],color_model, color_prediction])
+        d.append(["Multi Layer Perceptron (Neural Networks) With 70% Accuracy and Trained on 18-11-2021", c, b[i],color_model, color_prediction])
 
     return d[0]
 
@@ -200,7 +200,7 @@ def KNN_predict(df_predict):
         else:
             b.append(1 - i)
     for i in range(len(b)):
-        d.append(["K Nearest Neighbours With 79% Accuracy and Trained on 18-11-2021", c, b[i],color_model, color_prediction])
+        d.append(["K Nearest Neighbours With 69% Accuracy and Trained on 18-11-2021", c, b[i],color_model, color_prediction])
 
     return d[0]
 

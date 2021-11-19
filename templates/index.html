@@ -52,7 +52,11 @@
             Non-small-cell lung cancer (NSCLC) patients often develop Complications, and the overall survival for these patients is
             usually perishing. However, a model with high accuracy for predicting the Surgeries Requirement is still lacking. Here, We Canary Global Inc.
            Data Science Team aimed to establish models based on artificial intelligence for predicting the Surgeries Requirement in NSCLC Patient.
-
+         {% if show_form != "false" %}
+             <br><br>
+             Random Forest, eXtreme Gradient Boosting, Extra Trees Model, Auto ML Google, Categorical Boosting, Light Gradient Boosting, Logistic Regression,
+             Support Vector Machine, Multi Layer Perceptron (Neural Networks),K Nearest Neighbors (KNN) algorithms were used to generate predictive models.
+            {% endif %}
         </div>
 
 
@@ -72,6 +76,8 @@
 
                 <p style="margin-top: 15px"> Disclaimer: This Project is under Development and not right now for Production and Internal Part of Canary Global Inc. </p>
 
+                <a href="/logout" style="padding-left:150px"> <input type="submit" value="Logout" class="btn btn-success" style="color:#FFFFFF;background: #4b6cb7;border-style: hidden ;"></a>
+
 
             </nav>
 
@@ -90,7 +96,7 @@
             {% else %}
 
 
-      <form class="form-group" style="text-align:center;" method="POST" action="/process">
+      <form class="form-group" style="text-align:center;" method="POST" action="/loading">
 
           <div class="row my-auto" style="padding-left: 100px;padding-right: 10px;padding-top:20px">
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{{ url_for('static',filename='css/login.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<div class="login" style="position: absolute;top:35%;left: 35%;">
+  <div class="form">
+    <form class="login-form" action="" method="post">
+      <span class="material-icons">lock</span>
+      <input type="text" placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="username"/>
+      <input type="password" placeholder="password" name="password" required />
+         {% if error_login %}
+        <p class="error" style="font-family: 'Comfortaa', cursive;"><strong>Error:</strong> {{ error_login }}
+      {% endif %}
+      <button  type="submit" value="Login" >login</button>
+    </form>
+  </div>
+</div>
+</html>
