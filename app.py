@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory,redirect,url_for,session
+import requests
 import pandas as pd
 import utils
 import functools
@@ -78,7 +79,7 @@ def loading_page():
     except:
         all_prediction_data = []
         return render_template('predict.html', show_error='true', all_prediction_data=all_prediction_data)
-        
+
 @app.route('/user_details', methods=['GET','POST'])
 @login_required
 def user_page():
@@ -93,9 +94,10 @@ def user_page():
 def process():
     all_data = []
     all_prediction_data=[]
-    df_data_predict=pd.read_csv('static/tempdf.csv')
-    df_algorithms=pd.read_csv('static/tempml.csv')
+
     try:
+        df_data_predict = pd.read_csv('static/tempdf.csv')
+        df_algorithms = pd.read_csv('static/tempml.csv')
         os.remove('static/tempml.csv')
         os.remove('static/tempdf.csv')
     except:
