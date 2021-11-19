@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, send_from_directory,redirect,url_for,session
-import requests
 import pandas as pd
 import utils
 import functools
