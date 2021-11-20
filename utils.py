@@ -239,7 +239,7 @@ def extratree_predict(df_predict):
     c = model.predict(df_predict)[0]
     d = []
     if c == 0:
-        c = 'No Surgery Should not be Required'
+        c = 'Surgery Should not be Required'
         color_prediction = '#13b438'
 
     else:
