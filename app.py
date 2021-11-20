@@ -1,28 +1,37 @@
 from flask import Flask, render_template, request, send_from_directory,redirect,url_for,session
+from datetime import timedelta
 import pandas as pd
 import utils
 import functools
 import os
 app = Flask(__name__)
 app.secret_key = "CanaryGlobal@2021"
+app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=10)
 def login_required(func):
     @functools.wraps(func)
     def secure_function():
         if "username" not in session:
             error_login = 'Please Login to acess this Page'
-            return redirect(url_for("login_page"))
+            return redirect(url_for("login_page",error_login=error_login))
         return func()
     return secure_function
 @app.route('/', methods=['GET', 'POST'])
 def login_page():
     error_login = None
     if request.method == 'POST':
-        a = {'owais.ahmed@canarydetect.com': 'Canary@2021', 'r.varsha@canarydetect.com': 'Canary@2021'}
-        if request.form['username'] in a and a[request.form['username']] == request.form['password']:
+        users = {'owais.ahmed@canarydetect.com': 'Canary@2021', 'r.varsha@canarydetect.com': 'Canary@2021',\
+             'prince.nadar@canarydetect.com':'Canary@2021','hashmi.farogh@canarydetect.com':'Canary@2021',\
+             'geetesh.mishra@canarydetect.com':'Canary@2021','purav.badani@canarydetect.com':'Canary@2021',\
+             'milind.tamore@canarydetect.com':'Canary@2021','zohaib.ahmed@canarydetect.com':'Canary@2021',\
+                'gopal.palla@canarydetect.com':'Canary@2021','raj@canarydetect.com':'Canary@2021',\
+                 'harshavardhan.karkar@canarydetect.com':'Canary@2021','avinash.joshi@canarydetect.com':'Canary@2021',\
+                 'osho.sachdeva@canarydetect.com':'Canary@2021','prashant.ghodwade@canarydetect.com':'Canary@2021',\
+                 'mj@canarydetect.com':'Canary@2021','ashwin.chalke@canarydetect.com':'Canary@2021'}
+        if request.form['username'] in users and users[request.form['username']] == request.form['password']:
             session["username"] = request.form['username']
             return redirect(url_for('landing_page_after_login'))
 
-        elif request.form['username'] not in a:
+        elif request.form['username'] not in users:
             return render_template('login.html', error_login='User is Not in DataBase..Please Contact Admin')
 
         else:
@@ -147,8 +156,8 @@ def process():
 
 @app.route('/logout', methods=['GET','POST'])
 def logout():
-    session["username"]= None
+    session.clear()
     return redirect(url_for('login_page'))
 
 if __name__ == '__main__':
-    app.run(debug=False, host="127.0.0.1")
+    app.run(debug=True, host="127.0.0.1")
