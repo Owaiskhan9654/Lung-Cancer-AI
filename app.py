@@ -26,7 +26,8 @@ def login_page():
                 'gopal.palla@canarydetect.com':'Canary@2021','raj@canarydetect.com':'Canary@2021',\
                  'harshavardhan.karkar@canarydetect.com':'Canary@2021','avinash.joshi@canarydetect.com':'Canary@2021',\
                  'osho.sachdeva@canarydetect.com':'Canary@2021','prashant.ghodwade@canarydetect.com':'Canary@2021',\
-                 'mj@canarydetect.com':'Canary@2021','ashwin.chalke@canarydetect.com':'Canary@2021'}
+                 'mj@canarydetect.com':'Canary@2021','ashwin.chalke@canarydetect.com':'Canary@2021',\
+                 'shirish.deshpande@canarydetect.com':'Canary@2021'}
         if request.form['username'] in users and users[request.form['username']] == request.form['password']:
             session["username"] = request.form['username']
             return redirect(url_for('landing_page_after_login'))
